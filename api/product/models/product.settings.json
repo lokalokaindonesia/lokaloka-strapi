@@ -57,6 +57,10 @@
     "reviews": {
       "via": "product",
       "collection": "review"
+    },
+    "carts": {
+      "via": "product",
+      "collection": "cart"
     }
   }
 }

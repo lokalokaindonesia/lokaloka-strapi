@@ -78,6 +78,10 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "carts": {
+      "via": "user",
+      "collection": "cart"
     }
   }
 }
