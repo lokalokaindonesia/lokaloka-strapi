@@ -82,6 +82,14 @@
     "carts": {
       "via": "user",
       "collection": "cart"
+    },
+    "isAgent": {
+      "type": "boolean",
+      "default": false
+    },
+    "coupon": {
+      "via": "user",
+      "model": "coupon"
     }
   }
 }
