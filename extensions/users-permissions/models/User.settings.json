@@ -90,6 +90,10 @@
     "coupon": {
       "via": "user",
       "model": "coupon"
+    },
+    "order": {
+      "via": "user",
+      "model": "order"
     }
   }
 }

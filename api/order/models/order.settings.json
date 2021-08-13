@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "order",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "order"
+    },
+    "totalQuantity": {
+      "type": "biginteger"
+    },
+    "products": {
+      "type": "json"
+    },
+    "totalPrice": {
+      "type": "biginteger"
+    }
+  }
+}
