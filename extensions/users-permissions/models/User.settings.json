@@ -94,6 +94,10 @@
     "order": {
       "via": "user",
       "model": "order"
+    },
+    "transactions": {
+      "via": "user",
+      "collection": "transaction"
     }
   }
 }

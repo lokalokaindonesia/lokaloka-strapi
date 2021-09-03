@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "name": "Transaction",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "transactions"
+    },
+    "productsOrigin": {
+      "type": "json",
+      "required": true
+    },
+    "products": {
+      "type": "json",
+      "required": true
+    },
+    "coupon": {
+      "model": "coupon",
+      "via": "transactions"
+    },
+    "totalQuantity": {
+      "type": "biginteger",
+      "required": true
+    },
+    "totalPrice": {
+      "type": "biginteger",
+      "required": true
+    },
+    "discount": {
+      "type": "biginteger",
+      "required": true
+    },
+    "subTotal": {
+      "type": "biginteger",
+      "required": true
+    },
+    "paymentMethod": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "bankNumber": {
+      "type": "string",
+      "required": false
+    },
+    "mobileNumber": {
+      "type": "string"
+    },
+    "paymentStatus": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

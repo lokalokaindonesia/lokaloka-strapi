@@ -25,6 +25,21 @@
     },
     "totalPrice": {
       "type": "biginteger"
+    },
+    "discount": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "subTotal": {
+      "type": "biginteger",
+      "required": true
+    },
+    "coupon": {
+      "model": "coupon",
+      "via": "orders"
+    },
+    "productsOrigin": {
+      "type": "json"
     }
   }
 }
