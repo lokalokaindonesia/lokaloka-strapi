@@ -63,6 +63,12 @@
     "paymentStatus": {
       "type": "string",
       "required": true
+    },
+    "qrCodeString": {
+      "type": "string"
+    },
+    "paymentCode": {
+      "type": "string"
     }
   }
 }

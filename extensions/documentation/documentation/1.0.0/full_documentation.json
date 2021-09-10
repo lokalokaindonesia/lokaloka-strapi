@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "09/02/2021 2:18:57 PM"
+    "x-generation-date": "09/10/2021 11:36:00 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6243,6 +6243,12 @@
                 "paymentStatus": {
                   "type": "string"
                 },
+                "qrCodeString": {
+                  "type": "string"
+                },
+                "paymentCode": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -7179,6 +7185,12 @@
           },
           "paymentStatus": {
             "type": "string"
+          },
+          "qrCodeString": {
+            "type": "string"
+          },
+          "paymentCode": {
+            "type": "string"
           }
         }
       },
@@ -7232,6 +7244,12 @@
             "type": "string"
           },
           "paymentStatus": {
+            "type": "string"
+          },
+          "qrCodeString": {
+            "type": "string"
+          },
+          "paymentCode": {
             "type": "string"
           },
           "created_by": {
@@ -7824,6 +7842,12 @@
                   "type": "string"
                 },
                 "paymentStatus": {
+                  "type": "string"
+                },
+                "qrCodeString": {
+                  "type": "string"
+                },
+                "paymentCode": {
                   "type": "string"
                 },
                 "created_by": {

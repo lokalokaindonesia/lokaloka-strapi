@@ -686,6 +686,12 @@
           },
           "paymentStatus": {
             "type": "string"
+          },
+          "qrCodeString": {
+            "type": "string"
+          },
+          "paymentCode": {
+            "type": "string"
           }
         }
       },
@@ -739,6 +745,12 @@
             "type": "string"
           },
           "paymentStatus": {
+            "type": "string"
+          },
+          "qrCodeString": {
+            "type": "string"
+          },
+          "paymentCode": {
             "type": "string"
           },
           "created_by": {
