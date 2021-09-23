@@ -22,9 +22,9 @@
       "required": true
     },
     "user": {
+      "via": "coupon",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "coupon"
+      "model": "user"
     },
     "orders": {
       "via": "coupon",

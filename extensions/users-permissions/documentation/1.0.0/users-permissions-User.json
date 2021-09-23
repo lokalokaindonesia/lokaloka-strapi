@@ -1598,6 +1598,16 @@
                 }
               }
             }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
           }
         }
       },
@@ -1676,6 +1686,16 @@
             "items": {
               "type": "string"
             }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

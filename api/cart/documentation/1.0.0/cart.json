@@ -598,6 +598,15 @@
                   "type": "string"
                 }
               },
+              "dateOfBirth": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

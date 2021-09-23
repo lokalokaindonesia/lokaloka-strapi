@@ -98,6 +98,15 @@
     "transactions": {
       "via": "user",
       "collection": "transaction"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
     }
   }
 }
