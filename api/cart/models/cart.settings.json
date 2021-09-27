@@ -2,20 +2,19 @@
   "kind": "collectionType",
   "collectionName": "carts",
   "info": {
-    "name": "cart",
-    "description": ""
+    "name": "Cart"
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
     "user": {
-      "via": "carts",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "carts"
     },
     "product": {
       "model": "product",

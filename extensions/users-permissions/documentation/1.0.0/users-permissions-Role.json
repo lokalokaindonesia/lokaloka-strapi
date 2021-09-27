@@ -579,12 +579,6 @@
                 "avatar": {
                   "type": "string"
                 },
-                "carts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "isAgent": {
                   "type": "boolean"
                 },
@@ -608,6 +602,12 @@
                 },
                 "phone": {
                   "type": "string"
+                },
+                "carts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"

@@ -1414,34 +1414,6 @@
               }
             }
           },
-          "carts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "product": {
-                  "type": "string"
-                },
-                "quantity": {
-                  "type": "integer"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "isAgent": {
             "type": "boolean",
             "default": false
@@ -1539,7 +1511,8 @@
                 "subTotal",
                 "paymentMethod",
                 "code",
-                "paymentStatus"
+                "paymentStatus",
+                "shouldPayAmount"
               ],
               "properties": {
                 "id": {
@@ -1590,6 +1563,9 @@
                 "paymentCode": {
                   "type": "string"
                 },
+                "shouldPayAmount": {
+                  "type": "integer"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1608,6 +1584,37 @@
           },
           "phone": {
             "type": "string"
+          },
+          "carts": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "product": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1665,12 +1672,6 @@
           "name": {
             "type": "string"
           },
-          "carts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "isAgent": {
             "type": "boolean",
             "default": false
@@ -1696,6 +1697,12 @@
           },
           "phone": {
             "type": "string"
+          },
+          "carts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

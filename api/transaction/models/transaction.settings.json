@@ -69,6 +69,10 @@
     },
     "paymentCode": {
       "type": "string"
+    },
+    "shouldPayAmount": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }

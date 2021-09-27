@@ -79,10 +79,6 @@
       "required": false,
       "pluginOptions": {}
     },
-    "carts": {
-      "via": "user",
-      "collection": "cart"
-    },
     "isAgent": {
       "type": "boolean",
       "default": false
@@ -107,6 +103,10 @@
     },
     "phone": {
       "type": "string"
+    },
+    "carts": {
+      "via": "user",
+      "collection": "cart"
     }
   }
 }

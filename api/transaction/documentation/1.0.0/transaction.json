@@ -525,7 +525,8 @@
           "subTotal",
           "paymentMethod",
           "code",
-          "paymentStatus"
+          "paymentStatus",
+          "shouldPayAmount"
         ],
         "properties": {
           "id": {
@@ -586,12 +587,6 @@
               "avatar": {
                 "type": "string"
               },
-              "carts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "isAgent": {
                 "type": "boolean"
               },
@@ -615,6 +610,12 @@
               },
               "phone": {
                 "type": "string"
+              },
+              "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -701,6 +702,9 @@
           },
           "paymentCode": {
             "type": "string"
+          },
+          "shouldPayAmount": {
+            "type": "integer"
           }
         }
       },
@@ -714,7 +718,8 @@
           "subTotal",
           "paymentMethod",
           "code",
-          "paymentStatus"
+          "paymentStatus",
+          "shouldPayAmount"
         ],
         "properties": {
           "user": {
@@ -761,6 +766,9 @@
           },
           "paymentCode": {
             "type": "string"
+          },
+          "shouldPayAmount": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"

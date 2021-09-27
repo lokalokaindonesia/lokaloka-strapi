@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "09/21/2021 4:34:23 PM"
+    "x-generation-date": "09/27/2021 3:18:37 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5927,12 +5927,6 @@
               "avatar": {
                 "type": "string"
               },
-              "carts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "isAgent": {
                 "type": "boolean"
               },
@@ -5956,6 +5950,12 @@
               },
               "phone": {
                 "type": "string"
+              },
+              "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -6028,6 +6028,10 @@
           },
           "quantity": {
             "type": "integer"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -6041,6 +6045,10 @@
           },
           "quantity": {
             "type": "integer"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -6121,12 +6129,6 @@
               "avatar": {
                 "type": "string"
               },
-              "carts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "isAgent": {
                 "type": "boolean"
               },
@@ -6150,6 +6152,12 @@
               },
               "phone": {
                 "type": "string"
+              },
+              "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -6216,7 +6224,8 @@
                 "subTotal",
                 "paymentMethod",
                 "code",
-                "paymentStatus"
+                "paymentStatus",
+                "shouldPayAmount"
               ],
               "properties": {
                 "id": {
@@ -6266,6 +6275,9 @@
                 },
                 "paymentCode": {
                   "type": "string"
+                },
+                "shouldPayAmount": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"
@@ -6377,12 +6389,6 @@
               "avatar": {
                 "type": "string"
               },
-              "carts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "isAgent": {
                 "type": "boolean"
               },
@@ -6406,6 +6412,12 @@
               },
               "phone": {
                 "type": "string"
+              },
+              "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -6796,6 +6808,9 @@
                 "quantity": {
                   "type": "integer"
                 },
+                "published_at": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -6926,12 +6941,6 @@
               "avatar": {
                 "type": "string"
               },
-              "carts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "isAgent": {
                 "type": "boolean"
               },
@@ -6955,6 +6964,12 @@
               },
               "phone": {
                 "type": "string"
+              },
+              "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -7060,7 +7075,8 @@
           "subTotal",
           "paymentMethod",
           "code",
-          "paymentStatus"
+          "paymentStatus",
+          "shouldPayAmount"
         ],
         "properties": {
           "id": {
@@ -7121,12 +7137,6 @@
               "avatar": {
                 "type": "string"
               },
-              "carts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "isAgent": {
                 "type": "boolean"
               },
@@ -7150,6 +7160,12 @@
               },
               "phone": {
                 "type": "string"
+              },
+              "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
@@ -7236,6 +7252,9 @@
           },
           "paymentCode": {
             "type": "string"
+          },
+          "shouldPayAmount": {
+            "type": "integer"
           }
         }
       },
@@ -7249,7 +7268,8 @@
           "subTotal",
           "paymentMethod",
           "code",
-          "paymentStatus"
+          "paymentStatus",
+          "shouldPayAmount"
         ],
         "properties": {
           "user": {
@@ -7296,6 +7316,9 @@
           },
           "paymentCode": {
             "type": "string"
+          },
+          "shouldPayAmount": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"
@@ -7422,12 +7445,6 @@
                 "avatar": {
                   "type": "string"
                 },
-                "carts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "isAgent": {
                   "type": "boolean"
                 },
@@ -7451,6 +7468,12 @@
                 },
                 "phone": {
                   "type": "string"
+                },
+                "carts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -7728,34 +7751,6 @@
               }
             }
           },
-          "carts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                },
-                "product": {
-                  "type": "string"
-                },
-                "quantity": {
-                  "type": "integer"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "isAgent": {
             "type": "boolean",
             "default": false
@@ -7853,7 +7848,8 @@
                 "subTotal",
                 "paymentMethod",
                 "code",
-                "paymentStatus"
+                "paymentStatus",
+                "shouldPayAmount"
               ],
               "properties": {
                 "id": {
@@ -7904,6 +7900,9 @@
                 "paymentCode": {
                   "type": "string"
                 },
+                "shouldPayAmount": {
+                  "type": "integer"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -7922,6 +7921,37 @@
           },
           "phone": {
             "type": "string"
+          },
+          "carts": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "product": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -7979,12 +8009,6 @@
           "name": {
             "type": "string"
           },
-          "carts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "isAgent": {
             "type": "boolean",
             "default": false
@@ -8010,6 +8034,12 @@
           },
           "phone": {
             "type": "string"
+          },
+          "carts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"
