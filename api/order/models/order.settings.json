@@ -40,6 +40,10 @@
     },
     "productsOrigin": {
       "type": "json"
+    },
+    "totalWeight": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }

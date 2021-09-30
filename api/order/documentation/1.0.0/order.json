@@ -517,7 +517,8 @@
       "Order": {
         "required": [
           "id",
-          "subTotal"
+          "subTotal",
+          "totalWeight"
         ],
         "properties": {
           "id": {
@@ -673,12 +674,16 @@
           },
           "productsOrigin": {
             "type": "object"
+          },
+          "totalWeight": {
+            "type": "integer"
           }
         }
       },
       "NewOrder": {
         "required": [
-          "subTotal"
+          "subTotal",
+          "totalWeight"
         ],
         "properties": {
           "user": {
@@ -705,6 +710,9 @@
           },
           "productsOrigin": {
             "type": "object"
+          },
+          "totalWeight": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"

@@ -1460,7 +1460,8 @@
           "order": {
             "required": [
               "id",
-              "subTotal"
+              "subTotal",
+              "totalWeight"
             ],
             "properties": {
               "id": {
@@ -1490,6 +1491,9 @@
               "productsOrigin": {
                 "type": "object"
               },
+              "totalWeight": {
+                "type": "integer"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -1512,7 +1516,8 @@
                 "paymentMethod",
                 "code",
                 "paymentStatus",
-                "shouldPayAmount"
+                "shouldPayAmount",
+                "shippingLocation"
               ],
               "properties": {
                 "id": {
@@ -1565,6 +1570,9 @@
                 },
                 "shouldPayAmount": {
                   "type": "integer"
+                },
+                "shippingLocation": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

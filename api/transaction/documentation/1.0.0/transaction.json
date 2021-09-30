@@ -526,7 +526,8 @@
           "paymentMethod",
           "code",
           "paymentStatus",
-          "shouldPayAmount"
+          "shouldPayAmount",
+          "shippingLocation"
         ],
         "properties": {
           "id": {
@@ -705,6 +706,9 @@
           },
           "shouldPayAmount": {
             "type": "integer"
+          },
+          "shippingLocation": {
+            "type": "string"
           }
         }
       },
@@ -719,7 +723,8 @@
           "paymentMethod",
           "code",
           "paymentStatus",
-          "shouldPayAmount"
+          "shouldPayAmount",
+          "shippingLocation"
         ],
         "properties": {
           "user": {
@@ -769,6 +774,9 @@
           },
           "shouldPayAmount": {
             "type": "integer"
+          },
+          "shippingLocation": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

@@ -73,6 +73,10 @@
     "shouldPayAmount": {
       "type": "biginteger",
       "required": true
+    },
+    "shippingLocation": {
+      "type": "string",
+      "required": true
     }
   }
 }

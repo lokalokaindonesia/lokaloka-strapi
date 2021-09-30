@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "09/27/2021 3:18:37 PM"
+    "x-generation-date": "09/30/2021 5:17:24 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6172,7 +6172,8 @@
             "items": {
               "required": [
                 "id",
-                "subTotal"
+                "subTotal",
+                "totalWeight"
               ],
               "properties": {
                 "id": {
@@ -6202,6 +6203,9 @@
                 "productsOrigin": {
                   "type": "object"
                 },
+                "totalWeight": {
+                  "type": "integer"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -6225,7 +6229,8 @@
                 "paymentMethod",
                 "code",
                 "paymentStatus",
-                "shouldPayAmount"
+                "shouldPayAmount",
+                "shippingLocation"
               ],
               "properties": {
                 "id": {
@@ -6279,6 +6284,9 @@
                 "shouldPayAmount": {
                   "type": "integer"
                 },
+                "shippingLocation": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -6328,7 +6336,8 @@
       "Order": {
         "required": [
           "id",
-          "subTotal"
+          "subTotal",
+          "totalWeight"
         ],
         "properties": {
           "id": {
@@ -6484,12 +6493,16 @@
           },
           "productsOrigin": {
             "type": "object"
+          },
+          "totalWeight": {
+            "type": "integer"
           }
         }
       },
       "NewOrder": {
         "required": [
-          "subTotal"
+          "subTotal",
+          "totalWeight"
         ],
         "properties": {
           "user": {
@@ -6516,6 +6529,9 @@
           },
           "productsOrigin": {
             "type": "object"
+          },
+          "totalWeight": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"
@@ -7076,7 +7092,8 @@
           "paymentMethod",
           "code",
           "paymentStatus",
-          "shouldPayAmount"
+          "shouldPayAmount",
+          "shippingLocation"
         ],
         "properties": {
           "id": {
@@ -7255,6 +7272,9 @@
           },
           "shouldPayAmount": {
             "type": "integer"
+          },
+          "shippingLocation": {
+            "type": "string"
           }
         }
       },
@@ -7269,7 +7289,8 @@
           "paymentMethod",
           "code",
           "paymentStatus",
-          "shouldPayAmount"
+          "shouldPayAmount",
+          "shippingLocation"
         ],
         "properties": {
           "user": {
@@ -7319,6 +7340,9 @@
           },
           "shouldPayAmount": {
             "type": "integer"
+          },
+          "shippingLocation": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -7797,7 +7821,8 @@
           "order": {
             "required": [
               "id",
-              "subTotal"
+              "subTotal",
+              "totalWeight"
             ],
             "properties": {
               "id": {
@@ -7827,6 +7852,9 @@
               "productsOrigin": {
                 "type": "object"
               },
+              "totalWeight": {
+                "type": "integer"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -7849,7 +7877,8 @@
                 "paymentMethod",
                 "code",
                 "paymentStatus",
-                "shouldPayAmount"
+                "shouldPayAmount",
+                "shippingLocation"
               ],
               "properties": {
                 "id": {
@@ -7902,6 +7931,9 @@
                 },
                 "shouldPayAmount": {
                   "type": "integer"
+                },
+                "shippingLocation": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
