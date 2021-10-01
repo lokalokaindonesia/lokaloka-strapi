@@ -1,0 +1,1752 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type Cart {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UsersPermissionsUser
+  product: Product
+  quantity: Long
+  published_at: DateTime
+}
+
+type CartConnection {
+  values: [Cart]
+  groupBy: CartGroupBy
+  aggregate: CartAggregator
+}
+
+type CartAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CartGroupBy {
+  id: [CartConnectionId]
+  _id: [CartConnection_id]
+  createdAt: [CartConnectionCreatedAt]
+  updatedAt: [CartConnectionUpdatedAt]
+  user: [CartConnectionUser]
+  product: [CartConnectionProduct]
+  quantity: [CartConnectionQuantity]
+  published_at: [CartConnectionPublished_at]
+}
+
+type CartConnectionId {
+  key: ID
+  connection: CartConnection
+}
+
+type CartConnection_id {
+  key: ID
+  connection: CartConnection
+}
+
+type CartConnectionCreatedAt {
+  key: DateTime
+  connection: CartConnection
+}
+
+type CartConnectionUpdatedAt {
+  key: DateTime
+  connection: CartConnection
+}
+
+type CartConnectionUser {
+  key: ID
+  connection: CartConnection
+}
+
+type CartConnectionProduct {
+  key: ID
+  connection: CartConnection
+}
+
+type CartConnectionQuantity {
+  key: ID
+  connection: CartConnection
+}
+
+type CartConnectionPublished_at {
+  key: DateTime
+  connection: CartConnection
+}
+
+input CartInput {
+  user: ID
+  product: ID
+  quantity: Long
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editCartInput {
+  user: ID
+  product: ID
+  quantity: Long
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createCartInput {
+  data: CartInput
+}
+
+type createCartPayload {
+  cart: Cart
+}
+
+input updateCartInput {
+  where: InputID
+  data: editCartInput
+}
+
+type updateCartPayload {
+  cart: Cart
+}
+
+input deleteCartInput {
+  where: InputID
+}
+
+type deleteCartPayload {
+  cart: Cart
+}
+
+type Coupon {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  code: String!
+  discount: Long!
+  user: UsersPermissionsUser
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
+  transactions(sort: String, limit: Int, start: Int, where: JSON): [Transaction]
+}
+
+type CouponConnection {
+  values: [Coupon]
+  groupBy: CouponGroupBy
+  aggregate: CouponAggregator
+}
+
+type CouponAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CouponGroupBy {
+  id: [CouponConnectionId]
+  _id: [CouponConnection_id]
+  createdAt: [CouponConnectionCreatedAt]
+  updatedAt: [CouponConnectionUpdatedAt]
+  code: [CouponConnectionCode]
+  discount: [CouponConnectionDiscount]
+  user: [CouponConnectionUser]
+}
+
+type CouponConnectionId {
+  key: ID
+  connection: CouponConnection
+}
+
+type CouponConnection_id {
+  key: ID
+  connection: CouponConnection
+}
+
+type CouponConnectionCreatedAt {
+  key: DateTime
+  connection: CouponConnection
+}
+
+type CouponConnectionUpdatedAt {
+  key: DateTime
+  connection: CouponConnection
+}
+
+type CouponConnectionCode {
+  key: String
+  connection: CouponConnection
+}
+
+type CouponConnectionDiscount {
+  key: ID
+  connection: CouponConnection
+}
+
+type CouponConnectionUser {
+  key: ID
+  connection: CouponConnection
+}
+
+input CouponInput {
+  code: String!
+  discount: Long!
+  user: ID
+  orders: [ID]
+  transactions: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editCouponInput {
+  code: String
+  discount: Long
+  user: ID
+  orders: [ID]
+  transactions: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createCouponInput {
+  data: CouponInput
+}
+
+type createCouponPayload {
+  coupon: Coupon
+}
+
+input updateCouponInput {
+  where: InputID
+  data: editCouponInput
+}
+
+type updateCouponPayload {
+  coupon: Coupon
+}
+
+input deleteCouponInput {
+  where: InputID
+}
+
+type deleteCouponPayload {
+  coupon: Coupon
+}
+
+type Order {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UsersPermissionsUser
+  totalQuantity: Long
+  products: JSON
+  totalPrice: Long
+  discount: Long
+  subTotal: Long!
+  coupon: Coupon
+  productsOrigin: JSON
+  totalWeight: Long!
+}
+
+type OrderConnection {
+  values: [Order]
+  groupBy: OrderGroupBy
+  aggregate: OrderAggregator
+}
+
+type OrderAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type OrderGroupBy {
+  id: [OrderConnectionId]
+  _id: [OrderConnection_id]
+  createdAt: [OrderConnectionCreatedAt]
+  updatedAt: [OrderConnectionUpdatedAt]
+  user: [OrderConnectionUser]
+  totalQuantity: [OrderConnectionTotalQuantity]
+  products: [OrderConnectionProducts]
+  totalPrice: [OrderConnectionTotalPrice]
+  discount: [OrderConnectionDiscount]
+  subTotal: [OrderConnectionSubTotal]
+  coupon: [OrderConnectionCoupon]
+  productsOrigin: [OrderConnectionProductsOrigin]
+  totalWeight: [OrderConnectionTotalWeight]
+}
+
+type OrderConnectionId {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnection_id {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionCreatedAt {
+  key: DateTime
+  connection: OrderConnection
+}
+
+type OrderConnectionUpdatedAt {
+  key: DateTime
+  connection: OrderConnection
+}
+
+type OrderConnectionUser {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionTotalQuantity {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionProducts {
+  key: JSON
+  connection: OrderConnection
+}
+
+type OrderConnectionTotalPrice {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionDiscount {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionSubTotal {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionCoupon {
+  key: ID
+  connection: OrderConnection
+}
+
+type OrderConnectionProductsOrigin {
+  key: JSON
+  connection: OrderConnection
+}
+
+type OrderConnectionTotalWeight {
+  key: ID
+  connection: OrderConnection
+}
+
+input OrderInput {
+  user: ID
+  totalQuantity: Long
+  products: JSON
+  totalPrice: Long
+  discount: Long
+  subTotal: Long!
+  coupon: ID
+  productsOrigin: JSON
+  totalWeight: Long!
+  created_by: ID
+  updated_by: ID
+}
+
+input editOrderInput {
+  user: ID
+  totalQuantity: Long
+  products: JSON
+  totalPrice: Long
+  discount: Long
+  subTotal: Long
+  coupon: ID
+  productsOrigin: JSON
+  totalWeight: Long
+  created_by: ID
+  updated_by: ID
+}
+
+input createOrderInput {
+  data: OrderInput
+}
+
+type createOrderPayload {
+  order: Order
+}
+
+input updateOrderInput {
+  where: InputID
+  data: editOrderInput
+}
+
+type updateOrderPayload {
+  order: Order
+}
+
+input deleteOrderInput {
+  where: InputID
+}
+
+type deleteOrderPayload {
+  order: Order
+}
+
+type ProductCategory {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  slug: String
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+}
+
+type ProductCategoryConnection {
+  values: [ProductCategory]
+  groupBy: ProductCategoryGroupBy
+  aggregate: ProductCategoryAggregator
+}
+
+type ProductCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductCategoryGroupBy {
+  id: [ProductCategoryConnectionId]
+  _id: [ProductCategoryConnection_id]
+  createdAt: [ProductCategoryConnectionCreatedAt]
+  updatedAt: [ProductCategoryConnectionUpdatedAt]
+  name: [ProductCategoryConnectionName]
+  slug: [ProductCategoryConnectionSlug]
+}
+
+type ProductCategoryConnectionId {
+  key: ID
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnection_id {
+  key: ID
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionCreatedAt {
+  key: DateTime
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionUpdatedAt {
+  key: DateTime
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionName {
+  key: String
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionSlug {
+  key: String
+  connection: ProductCategoryConnection
+}
+
+input ProductCategoryInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductCategoryInput {
+  name: String
+  slug: String
+  products: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductCategoryInput {
+  data: ProductCategoryInput
+}
+
+type createProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+input updateProductCategoryInput {
+  where: InputID
+  data: editProductCategoryInput
+}
+
+type updateProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+input deleteProductCategoryInput {
+  where: InputID
+}
+
+type deleteProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+type Product {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  price: Long
+  sellingPrice: Long
+  discount: Long
+  isRecommended: Boolean
+  description: String
+  weight: Long
+  slug: String
+  product_category: ProductCategory
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
+  carts(sort: String, limit: Int, start: Int, where: JSON): [Cart]
+}
+
+type ProductConnection {
+  values: [Product]
+  groupBy: ProductGroupBy
+  aggregate: ProductAggregator
+}
+
+type ProductAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductGroupBy {
+  id: [ProductConnectionId]
+  _id: [ProductConnection_id]
+  createdAt: [ProductConnectionCreatedAt]
+  updatedAt: [ProductConnectionUpdatedAt]
+  name: [ProductConnectionName]
+  price: [ProductConnectionPrice]
+  sellingPrice: [ProductConnectionSellingPrice]
+  discount: [ProductConnectionDiscount]
+  isRecommended: [ProductConnectionIsRecommended]
+  description: [ProductConnectionDescription]
+  weight: [ProductConnectionWeight]
+  slug: [ProductConnectionSlug]
+  product_category: [ProductConnectionProduct_category]
+}
+
+type ProductConnectionId {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnection_id {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionCreatedAt {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionUpdatedAt {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionName {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionPrice {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionSellingPrice {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionDiscount {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionIsRecommended {
+  key: Boolean
+  connection: ProductConnection
+}
+
+type ProductConnectionDescription {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionWeight {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionSlug {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionProduct_category {
+  key: ID
+  connection: ProductConnection
+}
+
+input ProductInput {
+  name: String
+  price: Long
+  sellingPrice: Long
+  discount: Long
+  isRecommended: Boolean
+  images: [ID]
+  description: String
+  weight: Long
+  slug: String
+  product_category: ID
+  reviews: [ID]
+  carts: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductInput {
+  name: String
+  price: Long
+  sellingPrice: Long
+  discount: Long
+  isRecommended: Boolean
+  images: [ID]
+  description: String
+  weight: Long
+  slug: String
+  product_category: ID
+  reviews: [ID]
+  carts: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Product
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Product
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Product
+}
+
+type Review {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String!
+  user: UsersPermissionsUser
+  product: Product
+}
+
+type ReviewConnection {
+  values: [Review]
+  groupBy: ReviewGroupBy
+  aggregate: ReviewAggregator
+}
+
+type ReviewAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ReviewGroupBy {
+  id: [ReviewConnectionId]
+  _id: [ReviewConnection_id]
+  createdAt: [ReviewConnectionCreatedAt]
+  updatedAt: [ReviewConnectionUpdatedAt]
+  text: [ReviewConnectionText]
+  user: [ReviewConnectionUser]
+  product: [ReviewConnectionProduct]
+}
+
+type ReviewConnectionId {
+  key: ID
+  connection: ReviewConnection
+}
+
+type ReviewConnection_id {
+  key: ID
+  connection: ReviewConnection
+}
+
+type ReviewConnectionCreatedAt {
+  key: DateTime
+  connection: ReviewConnection
+}
+
+type ReviewConnectionUpdatedAt {
+  key: DateTime
+  connection: ReviewConnection
+}
+
+type ReviewConnectionText {
+  key: String
+  connection: ReviewConnection
+}
+
+type ReviewConnectionUser {
+  key: ID
+  connection: ReviewConnection
+}
+
+type ReviewConnectionProduct {
+  key: ID
+  connection: ReviewConnection
+}
+
+input ReviewInput {
+  text: String!
+  user: ID
+  product: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editReviewInput {
+  text: String
+  user: ID
+  product: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createReviewInput {
+  data: ReviewInput
+}
+
+type createReviewPayload {
+  review: Review
+}
+
+input updateReviewInput {
+  where: InputID
+  data: editReviewInput
+}
+
+type updateReviewPayload {
+  review: Review
+}
+
+input deleteReviewInput {
+  where: InputID
+}
+
+type deleteReviewPayload {
+  review: Review
+}
+
+type Transaction {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UsersPermissionsUser
+  productsOrigin: JSON!
+  products: JSON!
+  coupon: Coupon
+  totalQuantity: Long!
+  totalPrice: Long!
+  discount: Long!
+  subTotal: Long!
+  paymentMethod: String!
+  code: String!
+  bankNumber: String
+  mobileNumber: String
+  paymentStatus: String!
+  qrCodeString: String
+  paymentCode: String
+  shouldPayAmount: Long!
+  shippingLocation: String!
+}
+
+type TransactionConnection {
+  values: [Transaction]
+  groupBy: TransactionGroupBy
+  aggregate: TransactionAggregator
+}
+
+type TransactionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TransactionGroupBy {
+  id: [TransactionConnectionId]
+  _id: [TransactionConnection_id]
+  createdAt: [TransactionConnectionCreatedAt]
+  updatedAt: [TransactionConnectionUpdatedAt]
+  user: [TransactionConnectionUser]
+  productsOrigin: [TransactionConnectionProductsOrigin]
+  products: [TransactionConnectionProducts]
+  coupon: [TransactionConnectionCoupon]
+  totalQuantity: [TransactionConnectionTotalQuantity]
+  totalPrice: [TransactionConnectionTotalPrice]
+  discount: [TransactionConnectionDiscount]
+  subTotal: [TransactionConnectionSubTotal]
+  paymentMethod: [TransactionConnectionPaymentMethod]
+  code: [TransactionConnectionCode]
+  bankNumber: [TransactionConnectionBankNumber]
+  mobileNumber: [TransactionConnectionMobileNumber]
+  paymentStatus: [TransactionConnectionPaymentStatus]
+  qrCodeString: [TransactionConnectionQrCodeString]
+  paymentCode: [TransactionConnectionPaymentCode]
+  shouldPayAmount: [TransactionConnectionShouldPayAmount]
+  shippingLocation: [TransactionConnectionShippingLocation]
+}
+
+type TransactionConnectionId {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnection_id {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionCreatedAt {
+  key: DateTime
+  connection: TransactionConnection
+}
+
+type TransactionConnectionUpdatedAt {
+  key: DateTime
+  connection: TransactionConnection
+}
+
+type TransactionConnectionUser {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionProductsOrigin {
+  key: JSON
+  connection: TransactionConnection
+}
+
+type TransactionConnectionProducts {
+  key: JSON
+  connection: TransactionConnection
+}
+
+type TransactionConnectionCoupon {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionTotalQuantity {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionTotalPrice {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionDiscount {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionSubTotal {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionPaymentMethod {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionCode {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionBankNumber {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionMobileNumber {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionPaymentStatus {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionQrCodeString {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionPaymentCode {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionShouldPayAmount {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionShippingLocation {
+  key: String
+  connection: TransactionConnection
+}
+
+input TransactionInput {
+  user: ID
+  productsOrigin: JSON!
+  products: JSON!
+  coupon: ID
+  totalQuantity: Long!
+  totalPrice: Long!
+  discount: Long!
+  subTotal: Long!
+  paymentMethod: String!
+  code: String!
+  bankNumber: String
+  mobileNumber: String
+  paymentStatus: String!
+  qrCodeString: String
+  paymentCode: String
+  shouldPayAmount: Long!
+  shippingLocation: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editTransactionInput {
+  user: ID
+  productsOrigin: JSON
+  products: JSON
+  coupon: ID
+  totalQuantity: Long
+  totalPrice: Long
+  discount: Long
+  subTotal: Long
+  paymentMethod: String
+  code: String
+  bankNumber: String
+  mobileNumber: String
+  paymentStatus: String
+  qrCodeString: String
+  paymentCode: String
+  shouldPayAmount: Long
+  shippingLocation: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createTransactionInput {
+  data: TransactionInput
+}
+
+type createTransactionPayload {
+  transaction: Transaction
+}
+
+input updateTransactionInput {
+  where: InputID
+  data: editTransactionInput
+}
+
+type updateTransactionPayload {
+  transaction: Transaction
+}
+
+input deleteTransactionInput {
+  where: InputID
+}
+
+type deleteTransactionPayload {
+  transaction: Transaction
+}
+
+type I18NLocale {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+type UploadFile {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  _id: [UploadFileConnection_id]
+  createdAt: [UploadFileConnectionCreatedAt]
+  updatedAt: [UploadFileConnectionUpdatedAt]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnection_id {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  _id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  _id: [UsersPermissionsRoleConnection_id]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnection_id {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  name: String
+  avatar: UploadFile
+  isAgent: Boolean
+  coupon: Coupon
+  order: Order
+  dateOfBirth: Date
+  gender: String
+  phone: String
+  favorites(sort: String, limit: Int, start: Int, where: JSON): [Product]
+  reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
+  transactions(sort: String, limit: Int, start: Int, where: JSON): [Transaction]
+  carts(sort: String, limit: Int, start: Int, where: JSON): [Cart]
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  _id: [UsersPermissionsUserConnection_id]
+  createdAt: [UsersPermissionsUserConnectionCreatedAt]
+  updatedAt: [UsersPermissionsUserConnectionUpdatedAt]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  name: [UsersPermissionsUserConnectionName]
+  avatar: [UsersPermissionsUserConnectionAvatar]
+  isAgent: [UsersPermissionsUserConnectionIsAgent]
+  coupon: [UsersPermissionsUserConnectionCoupon]
+  order: [UsersPermissionsUserConnectionOrder]
+  dateOfBirth: [UsersPermissionsUserConnectionDateOfBirth]
+  gender: [UsersPermissionsUserConnectionGender]
+  phone: [UsersPermissionsUserConnectionPhone]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnection_id {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreatedAt {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdatedAt {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionAvatar {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionIsAgent {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCoupon {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionOrder {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionDateOfBirth {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionGender {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionPhone {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  favorites: [ID]
+  reviews: [ID]
+  name: String
+  avatar: ID
+  isAgent: Boolean
+  coupon: ID
+  order: ID
+  transactions: [ID]
+  dateOfBirth: Date
+  gender: String
+  phone: String
+  carts: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  favorites: [ID]
+  reviews: [ID]
+  name: String
+  avatar: ID
+  isAgent: Boolean
+  coupon: ID
+  order: ID
+  transactions: [ID]
+  dateOfBirth: Date
+  gender: String
+  phone: String
+  carts: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cart | CartConnection | CartAggregator | CartGroupBy | CartConnectionId | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionUser | CartConnectionProduct | CartConnectionQuantity | CartConnectionPublished_at | createCartPayload | updateCartPayload | deleteCartPayload | Coupon | CouponConnection | CouponAggregator | CouponGroupBy | CouponConnectionId | CouponConnection_id | CouponConnectionCreatedAt | CouponConnectionUpdatedAt | CouponConnectionCode | CouponConnectionDiscount | CouponConnectionUser | createCouponPayload | updateCouponPayload | deleteCouponPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnection_id | OrderConnectionCreatedAt | OrderConnectionUpdatedAt | OrderConnectionUser | OrderConnectionTotalQuantity | OrderConnectionProducts | OrderConnectionTotalPrice | OrderConnectionDiscount | OrderConnectionSubTotal | OrderConnectionCoupon | OrderConnectionProductsOrigin | OrderConnectionTotalWeight | createOrderPayload | updateOrderPayload | deleteOrderPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionSlug | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Product | ProductConnection | ProductAggregator | ProductGroupBy | ProductConnectionId | ProductConnection_id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionName | ProductConnectionPrice | ProductConnectionSellingPrice | ProductConnectionDiscount | ProductConnectionIsRecommended | ProductConnectionDescription | ProductConnectionWeight | ProductConnectionSlug | ProductConnectionProduct_category | createProductPayload | updateProductPayload | deleteProductPayload | Review | ReviewConnection | ReviewAggregator | ReviewGroupBy | ReviewConnectionId | ReviewConnection_id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionUser | ReviewConnectionProduct | createReviewPayload | updateReviewPayload | deleteReviewPayload | Transaction | TransactionConnection | TransactionAggregator | TransactionGroupBy | TransactionConnectionId | TransactionConnection_id | TransactionConnectionCreatedAt | TransactionConnectionUpdatedAt | TransactionConnectionUser | TransactionConnectionProductsOrigin | TransactionConnectionProducts | TransactionConnectionCoupon | TransactionConnectionTotalQuantity | TransactionConnectionTotalPrice | TransactionConnectionDiscount | TransactionConnectionSubTotal | TransactionConnectionPaymentMethod | TransactionConnectionCode | TransactionConnectionBankNumber | TransactionConnectionMobileNumber | TransactionConnectionPaymentStatus | TransactionConnectionQrCodeString | TransactionConnectionPaymentCode | TransactionConnectionShouldPayAmount | TransactionConnectionShippingLocation | createTransactionPayload | updateTransactionPayload | deleteTransactionPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionName | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionIsAgent | UsersPermissionsUserConnectionCoupon | UsersPermissionsUserConnectionOrder | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionGender | UsersPermissionsUserConnectionPhone | createUserPayload | updateUserPayload | deleteUserPayload
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  cart(id: ID!, publicationState: PublicationState): Cart
+  carts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Cart]
+  cartsConnection(sort: String, limit: Int, start: Int, where: JSON): CartConnection
+  coupon(id: ID!, publicationState: PublicationState): Coupon
+  coupons(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Coupon]
+  couponsConnection(sort: String, limit: Int, start: Int, where: JSON): CouponConnection
+  order(id: ID!, publicationState: PublicationState): Order
+  orders(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Order]
+  ordersConnection(sort: String, limit: Int, start: Int, where: JSON): OrderConnection
+  productCategory(id: ID!, publicationState: PublicationState): ProductCategory
+  productCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ProductCategory]
+  productCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductCategoryConnection
+  product(id: ID!, publicationState: PublicationState): Product
+  products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Product]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductConnection
+  review(id: ID!, publicationState: PublicationState): Review
+  reviews(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Review]
+  reviewsConnection(sort: String, limit: Int, start: Int, where: JSON): ReviewConnection
+  transaction(id: ID!, publicationState: PublicationState): Transaction
+  transactions(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Transaction]
+  transactionsConnection(sort: String, limit: Int, start: Int, where: JSON): TransactionConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createCart(input: createCartInput): createCartPayload
+  updateCart(input: updateCartInput): updateCartPayload
+  deleteCart(input: deleteCartInput): deleteCartPayload
+  createCoupon(input: createCouponInput): createCouponPayload
+  updateCoupon(input: updateCouponInput): updateCouponPayload
+  deleteCoupon(input: deleteCouponInput): deleteCouponPayload
+  createOrder(input: createOrderInput): createOrderPayload
+  updateOrder(input: updateOrderInput): updateOrderPayload
+  deleteOrder(input: deleteOrderInput): deleteOrderPayload
+  createProductCategory(input: createProductCategoryInput): createProductCategoryPayload
+  updateProductCategory(input: updateProductCategoryInput): updateProductCategoryPayload
+  deleteProductCategory(input: deleteProductCategoryInput): deleteProductCategoryPayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  createReview(input: createReviewInput): createReviewPayload
+  updateReview(input: updateReviewInput): updateReviewPayload
+  deleteReview(input: deleteReviewInput): deleteReviewPayload
+  createTransaction(input: createTransactionInput): createTransactionPayload
+  updateTransaction(input: updateTransactionInput): updateTransactionPayload
+  deleteTransaction(input: deleteTransactionInput): deleteTransactionPayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
