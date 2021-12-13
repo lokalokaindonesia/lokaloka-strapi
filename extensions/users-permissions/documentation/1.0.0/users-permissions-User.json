@@ -1517,7 +1517,8 @@
                 "code",
                 "paymentStatus",
                 "shouldPayAmount",
-                "shippingLocation"
+                "shippingLocation",
+                "phone"
               ],
               "properties": {
                 "id": {
@@ -1572,6 +1573,9 @@
                   "type": "integer"
                 },
                 "shippingLocation": {
+                  "type": "string"
+                },
+                "phone": {
                   "type": "string"
                 },
                 "created_by": {

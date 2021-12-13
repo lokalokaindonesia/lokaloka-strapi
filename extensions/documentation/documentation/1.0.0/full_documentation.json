@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "09/30/2021 5:17:24 PM"
+    "x-generation-date": "12/13/2021 10:39:39 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6230,7 +6230,8 @@
                 "code",
                 "paymentStatus",
                 "shouldPayAmount",
-                "shippingLocation"
+                "shippingLocation",
+                "phone"
               ],
               "properties": {
                 "id": {
@@ -6285,6 +6286,9 @@
                   "type": "integer"
                 },
                 "shippingLocation": {
+                  "type": "string"
+                },
+                "phone": {
                   "type": "string"
                 },
                 "created_by": {
@@ -7093,7 +7097,8 @@
           "code",
           "paymentStatus",
           "shouldPayAmount",
-          "shippingLocation"
+          "shippingLocation",
+          "phone"
         ],
         "properties": {
           "id": {
@@ -7275,6 +7280,9 @@
           },
           "shippingLocation": {
             "type": "string"
+          },
+          "phone": {
+            "type": "string"
           }
         }
       },
@@ -7290,7 +7298,8 @@
           "code",
           "paymentStatus",
           "shouldPayAmount",
-          "shippingLocation"
+          "shippingLocation",
+          "phone"
         ],
         "properties": {
           "user": {
@@ -7342,6 +7351,9 @@
             "type": "integer"
           },
           "shippingLocation": {
+            "type": "string"
+          },
+          "phone": {
             "type": "string"
           },
           "created_by": {
@@ -7878,7 +7890,8 @@
                 "code",
                 "paymentStatus",
                 "shouldPayAmount",
-                "shippingLocation"
+                "shippingLocation",
+                "phone"
               ],
               "properties": {
                 "id": {
@@ -7933,6 +7946,9 @@
                   "type": "integer"
                 },
                 "shippingLocation": {
+                  "type": "string"
+                },
+                "phone": {
                   "type": "string"
                 },
                 "created_by": {
