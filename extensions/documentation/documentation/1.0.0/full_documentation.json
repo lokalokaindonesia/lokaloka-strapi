@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/13/2021 10:39:39 AM"
+    "x-generation-date": "12/20/2021 9:37:11 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6231,7 +6231,8 @@
                 "paymentStatus",
                 "shouldPayAmount",
                 "shippingLocation",
-                "phone"
+                "phone",
+                "shippingCost"
               ],
               "properties": {
                 "id": {
@@ -6270,9 +6271,6 @@
                 "bankNumber": {
                   "type": "string"
                 },
-                "mobileNumber": {
-                  "type": "string"
-                },
                 "paymentStatus": {
                   "type": "string"
                 },
@@ -6290,6 +6288,15 @@
                 },
                 "phone": {
                   "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "shippingCost": {
+                  "type": "integer"
+                },
+                "packagingFee": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"
@@ -7098,7 +7105,8 @@
           "paymentStatus",
           "shouldPayAmount",
           "shippingLocation",
-          "phone"
+          "phone",
+          "shippingCost"
         ],
         "properties": {
           "id": {
@@ -7263,9 +7271,6 @@
           "bankNumber": {
             "type": "string"
           },
-          "mobileNumber": {
-            "type": "string"
-          },
           "paymentStatus": {
             "type": "string"
           },
@@ -7283,6 +7288,17 @@
           },
           "phone": {
             "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "shippingCost": {
+            "type": "integer",
+            "default": "0"
+          },
+          "packagingFee": {
+            "type": "integer",
+            "default": "0"
           }
         }
       },
@@ -7299,7 +7315,8 @@
           "paymentStatus",
           "shouldPayAmount",
           "shippingLocation",
-          "phone"
+          "phone",
+          "shippingCost"
         ],
         "properties": {
           "user": {
@@ -7335,9 +7352,6 @@
           "bankNumber": {
             "type": "string"
           },
-          "mobileNumber": {
-            "type": "string"
-          },
           "paymentStatus": {
             "type": "string"
           },
@@ -7355,6 +7369,17 @@
           },
           "phone": {
             "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "shippingCost": {
+            "type": "integer",
+            "default": "0"
+          },
+          "packagingFee": {
+            "type": "integer",
+            "default": "0"
           },
           "created_by": {
             "type": "string"
@@ -7891,7 +7916,8 @@
                 "paymentStatus",
                 "shouldPayAmount",
                 "shippingLocation",
-                "phone"
+                "phone",
+                "shippingCost"
               ],
               "properties": {
                 "id": {
@@ -7930,9 +7956,6 @@
                 "bankNumber": {
                   "type": "string"
                 },
-                "mobileNumber": {
-                  "type": "string"
-                },
                 "paymentStatus": {
                   "type": "string"
                 },
@@ -7950,6 +7973,15 @@
                 },
                 "phone": {
                   "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "shippingCost": {
+                  "type": "integer"
+                },
+                "packagingFee": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"

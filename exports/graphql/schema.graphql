@@ -825,13 +825,15 @@ type Transaction {
   paymentMethod: String!
   code: String!
   bankNumber: String
-  mobileNumber: String
   paymentStatus: String!
   qrCodeString: String
   paymentCode: String
   shouldPayAmount: Long!
   shippingLocation: String!
   phone: String!
+  notes: String
+  shippingCost: Long!
+  packagingFee: Long
 }
 
 type TransactionConnection {
@@ -861,13 +863,15 @@ type TransactionGroupBy {
   paymentMethod: [TransactionConnectionPaymentMethod]
   code: [TransactionConnectionCode]
   bankNumber: [TransactionConnectionBankNumber]
-  mobileNumber: [TransactionConnectionMobileNumber]
   paymentStatus: [TransactionConnectionPaymentStatus]
   qrCodeString: [TransactionConnectionQrCodeString]
   paymentCode: [TransactionConnectionPaymentCode]
   shouldPayAmount: [TransactionConnectionShouldPayAmount]
   shippingLocation: [TransactionConnectionShippingLocation]
   phone: [TransactionConnectionPhone]
+  notes: [TransactionConnectionNotes]
+  shippingCost: [TransactionConnectionShippingCost]
+  packagingFee: [TransactionConnectionPackagingFee]
 }
 
 type TransactionConnectionId {
@@ -945,11 +949,6 @@ type TransactionConnectionBankNumber {
   connection: TransactionConnection
 }
 
-type TransactionConnectionMobileNumber {
-  key: String
-  connection: TransactionConnection
-}
-
 type TransactionConnectionPaymentStatus {
   key: String
   connection: TransactionConnection
@@ -980,6 +979,21 @@ type TransactionConnectionPhone {
   connection: TransactionConnection
 }
 
+type TransactionConnectionNotes {
+  key: String
+  connection: TransactionConnection
+}
+
+type TransactionConnectionShippingCost {
+  key: ID
+  connection: TransactionConnection
+}
+
+type TransactionConnectionPackagingFee {
+  key: ID
+  connection: TransactionConnection
+}
+
 input TransactionInput {
   user: ID
   productsOrigin: JSON!
@@ -992,13 +1006,15 @@ input TransactionInput {
   paymentMethod: String!
   code: String!
   bankNumber: String
-  mobileNumber: String
   paymentStatus: String!
   qrCodeString: String
   paymentCode: String
   shouldPayAmount: Long!
   shippingLocation: String!
   phone: String!
+  notes: String
+  shippingCost: Long
+  packagingFee: Long
   created_by: ID
   updated_by: ID
 }
@@ -1015,13 +1031,15 @@ input editTransactionInput {
   paymentMethod: String
   code: String
   bankNumber: String
-  mobileNumber: String
   paymentStatus: String
   qrCodeString: String
   paymentCode: String
   shouldPayAmount: Long
   shippingLocation: String
   phone: String
+  notes: String
+  shippingCost: Long
+  packagingFee: Long
   created_by: ID
   updated_by: ID
 }
@@ -1628,7 +1646,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cart | CartConnection | CartAggregator | CartGroupBy | CartConnectionId | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionUser | CartConnectionProduct | CartConnectionQuantity | CartConnectionPublished_at | createCartPayload | updateCartPayload | deleteCartPayload | Coupon | CouponConnection | CouponAggregator | CouponGroupBy | CouponConnectionId | CouponConnection_id | CouponConnectionCreatedAt | CouponConnectionUpdatedAt | CouponConnectionCode | CouponConnectionDiscount | CouponConnectionUser | createCouponPayload | updateCouponPayload | deleteCouponPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnection_id | OrderConnectionCreatedAt | OrderConnectionUpdatedAt | OrderConnectionUser | OrderConnectionTotalQuantity | OrderConnectionProducts | OrderConnectionTotalPrice | OrderConnectionDiscount | OrderConnectionSubTotal | OrderConnectionCoupon | OrderConnectionProductsOrigin | OrderConnectionTotalWeight | createOrderPayload | updateOrderPayload | deleteOrderPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionSlug | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Product | ProductConnection | ProductAggregator | ProductGroupBy | ProductConnectionId | ProductConnection_id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionName | ProductConnectionPrice | ProductConnectionSellingPrice | ProductConnectionDiscount | ProductConnectionIsRecommended | ProductConnectionDescription | ProductConnectionWeight | ProductConnectionSlug | ProductConnectionProduct_category | createProductPayload | updateProductPayload | deleteProductPayload | Review | ReviewConnection | ReviewAggregator | ReviewGroupBy | ReviewConnectionId | ReviewConnection_id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionUser | ReviewConnectionProduct | createReviewPayload | updateReviewPayload | deleteReviewPayload | Transaction | TransactionConnection | TransactionAggregator | TransactionGroupBy | TransactionConnectionId | TransactionConnection_id | TransactionConnectionCreatedAt | TransactionConnectionUpdatedAt | TransactionConnectionUser | TransactionConnectionProductsOrigin | TransactionConnectionProducts | TransactionConnectionCoupon | TransactionConnectionTotalQuantity | TransactionConnectionTotalPrice | TransactionConnectionDiscount | TransactionConnectionSubTotal | TransactionConnectionPaymentMethod | TransactionConnectionCode | TransactionConnectionBankNumber | TransactionConnectionMobileNumber | TransactionConnectionPaymentStatus | TransactionConnectionQrCodeString | TransactionConnectionPaymentCode | TransactionConnectionShouldPayAmount | TransactionConnectionShippingLocation | TransactionConnectionPhone | createTransactionPayload | updateTransactionPayload | deleteTransactionPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionName | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionIsAgent | UsersPermissionsUserConnectionCoupon | UsersPermissionsUserConnectionOrder | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionGender | UsersPermissionsUserConnectionPhone | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cart | CartConnection | CartAggregator | CartGroupBy | CartConnectionId | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionUser | CartConnectionProduct | CartConnectionQuantity | CartConnectionPublished_at | createCartPayload | updateCartPayload | deleteCartPayload | Coupon | CouponConnection | CouponAggregator | CouponGroupBy | CouponConnectionId | CouponConnection_id | CouponConnectionCreatedAt | CouponConnectionUpdatedAt | CouponConnectionCode | CouponConnectionDiscount | CouponConnectionUser | createCouponPayload | updateCouponPayload | deleteCouponPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnection_id | OrderConnectionCreatedAt | OrderConnectionUpdatedAt | OrderConnectionUser | OrderConnectionTotalQuantity | OrderConnectionProducts | OrderConnectionTotalPrice | OrderConnectionDiscount | OrderConnectionSubTotal | OrderConnectionCoupon | OrderConnectionProductsOrigin | OrderConnectionTotalWeight | createOrderPayload | updateOrderPayload | deleteOrderPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionSlug | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Product | ProductConnection | ProductAggregator | ProductGroupBy | ProductConnectionId | ProductConnection_id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionName | ProductConnectionPrice | ProductConnectionSellingPrice | ProductConnectionDiscount | ProductConnectionIsRecommended | ProductConnectionDescription | ProductConnectionWeight | ProductConnectionSlug | ProductConnectionProduct_category | createProductPayload | updateProductPayload | deleteProductPayload | Review | ReviewConnection | ReviewAggregator | ReviewGroupBy | ReviewConnectionId | ReviewConnection_id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionUser | ReviewConnectionProduct | createReviewPayload | updateReviewPayload | deleteReviewPayload | Transaction | TransactionConnection | TransactionAggregator | TransactionGroupBy | TransactionConnectionId | TransactionConnection_id | TransactionConnectionCreatedAt | TransactionConnectionUpdatedAt | TransactionConnectionUser | TransactionConnectionProductsOrigin | TransactionConnectionProducts | TransactionConnectionCoupon | TransactionConnectionTotalQuantity | TransactionConnectionTotalPrice | TransactionConnectionDiscount | TransactionConnectionSubTotal | TransactionConnectionPaymentMethod | TransactionConnectionCode | TransactionConnectionBankNumber | TransactionConnectionPaymentStatus | TransactionConnectionQrCodeString | TransactionConnectionPaymentCode | TransactionConnectionShouldPayAmount | TransactionConnectionShippingLocation | TransactionConnectionPhone | TransactionConnectionNotes | TransactionConnectionShippingCost | TransactionConnectionPackagingFee | createTransactionPayload | updateTransactionPayload | deleteTransactionPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionName | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionIsAgent | UsersPermissionsUserConnectionCoupon | UsersPermissionsUserConnectionOrder | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionGender | UsersPermissionsUserConnectionPhone | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!

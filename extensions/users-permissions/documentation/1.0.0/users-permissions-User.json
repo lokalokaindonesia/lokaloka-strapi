@@ -1518,7 +1518,8 @@
                 "paymentStatus",
                 "shouldPayAmount",
                 "shippingLocation",
-                "phone"
+                "phone",
+                "shippingCost"
               ],
               "properties": {
                 "id": {
@@ -1557,9 +1558,6 @@
                 "bankNumber": {
                   "type": "string"
                 },
-                "mobileNumber": {
-                  "type": "string"
-                },
                 "paymentStatus": {
                   "type": "string"
                 },
@@ -1577,6 +1575,15 @@
                 },
                 "phone": {
                   "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "shippingCost": {
+                  "type": "integer"
+                },
+                "packagingFee": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"

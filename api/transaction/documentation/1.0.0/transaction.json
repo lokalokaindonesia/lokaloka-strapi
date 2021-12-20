@@ -528,7 +528,8 @@
           "paymentStatus",
           "shouldPayAmount",
           "shippingLocation",
-          "phone"
+          "phone",
+          "shippingCost"
         ],
         "properties": {
           "id": {
@@ -693,9 +694,6 @@
           "bankNumber": {
             "type": "string"
           },
-          "mobileNumber": {
-            "type": "string"
-          },
           "paymentStatus": {
             "type": "string"
           },
@@ -713,6 +711,17 @@
           },
           "phone": {
             "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "shippingCost": {
+            "type": "integer",
+            "default": "0"
+          },
+          "packagingFee": {
+            "type": "integer",
+            "default": "0"
           }
         }
       },
@@ -729,7 +738,8 @@
           "paymentStatus",
           "shouldPayAmount",
           "shippingLocation",
-          "phone"
+          "phone",
+          "shippingCost"
         ],
         "properties": {
           "user": {
@@ -765,9 +775,6 @@
           "bankNumber": {
             "type": "string"
           },
-          "mobileNumber": {
-            "type": "string"
-          },
           "paymentStatus": {
             "type": "string"
           },
@@ -785,6 +792,17 @@
           },
           "phone": {
             "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "shippingCost": {
+            "type": "integer",
+            "default": "0"
+          },
+          "packagingFee": {
+            "type": "integer",
+            "default": "0"
           },
           "created_by": {
             "type": "string"

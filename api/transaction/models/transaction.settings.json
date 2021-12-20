@@ -57,9 +57,6 @@
       "type": "string",
       "required": false
     },
-    "mobileNumber": {
-      "type": "string"
-    },
     "paymentStatus": {
       "type": "string",
       "required": true
@@ -81,6 +78,18 @@
     "phone": {
       "type": "string",
       "required": true
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "shippingCost": {
+      "type": "biginteger",
+      "required": true,
+      "default": "0"
+    },
+    "packagingFee": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }
