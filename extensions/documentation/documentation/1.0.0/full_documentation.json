@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/20/2021 9:37:11 AM"
+    "x-generation-date": "12/24/2021 11:46:48 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6062,7 +6062,8 @@
         "required": [
           "id",
           "code",
-          "discount"
+          "discount",
+          "minSpend"
         ],
         "properties": {
           "id": {
@@ -6306,13 +6307,20 @@
                 }
               }
             }
+          },
+          "maxDiscount": {
+            "type": "integer"
+          },
+          "minSpend": {
+            "type": "integer"
           }
         }
       },
       "NewCoupon": {
         "required": [
           "code",
-          "discount"
+          "discount",
+          "minSpend"
         ],
         "properties": {
           "code": {
@@ -6335,6 +6343,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "maxDiscount": {
+            "type": "integer"
+          },
+          "minSpend": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"
@@ -6467,7 +6481,8 @@
             "required": [
               "id",
               "code",
-              "discount"
+              "discount",
+              "minSpend"
             ],
             "properties": {
               "id": {
@@ -6493,6 +6508,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "maxDiscount": {
+                "type": "integer"
+              },
+              "minSpend": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -7215,7 +7236,8 @@
             "required": [
               "id",
               "code",
-              "discount"
+              "discount",
+              "minSpend"
             ],
             "properties": {
               "id": {
@@ -7241,6 +7263,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "maxDiscount": {
+                "type": "integer"
+              },
+              "minSpend": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
@@ -7820,7 +7848,8 @@
             "required": [
               "id",
               "code",
-              "discount"
+              "discount",
+              "minSpend"
             ],
             "properties": {
               "id": {
@@ -7846,6 +7875,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "maxDiscount": {
+                "type": "integer"
+              },
+              "minSpend": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"

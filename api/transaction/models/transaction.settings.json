@@ -26,8 +26,8 @@
       "required": true
     },
     "coupon": {
-      "model": "coupon",
-      "via": "transactions"
+      "via": "transactions",
+      "model": "coupon"
     },
     "totalQuantity": {
       "type": "biginteger",

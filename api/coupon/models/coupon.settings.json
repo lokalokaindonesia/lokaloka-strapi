@@ -33,6 +33,13 @@
     "transactions": {
       "via": "coupon",
       "collection": "transaction"
+    },
+    "maxDiscount": {
+      "type": "biginteger"
+    },
+    "minSpend": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }

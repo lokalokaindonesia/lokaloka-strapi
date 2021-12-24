@@ -35,8 +35,8 @@
       "required": true
     },
     "coupon": {
-      "model": "coupon",
-      "via": "orders"
+      "via": "orders",
+      "model": "coupon"
     },
     "productsOrigin": {
       "type": "json"

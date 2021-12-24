@@ -518,7 +518,8 @@
         "required": [
           "id",
           "code",
-          "discount"
+          "discount",
+          "minSpend"
         ],
         "properties": {
           "id": {
@@ -762,13 +763,20 @@
                 }
               }
             }
+          },
+          "maxDiscount": {
+            "type": "integer"
+          },
+          "minSpend": {
+            "type": "integer"
           }
         }
       },
       "NewCoupon": {
         "required": [
           "code",
-          "discount"
+          "discount",
+          "minSpend"
         ],
         "properties": {
           "code": {
@@ -791,6 +799,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "maxDiscount": {
+            "type": "integer"
+          },
+          "minSpend": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"

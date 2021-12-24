@@ -637,7 +637,8 @@
             "required": [
               "id",
               "code",
-              "discount"
+              "discount",
+              "minSpend"
             ],
             "properties": {
               "id": {
@@ -663,6 +664,12 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "maxDiscount": {
+                "type": "integer"
+              },
+              "minSpend": {
+                "type": "integer"
               },
               "created_by": {
                 "type": "string"
