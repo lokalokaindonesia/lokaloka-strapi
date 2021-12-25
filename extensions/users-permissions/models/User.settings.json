@@ -83,10 +83,6 @@
       "type": "boolean",
       "default": false
     },
-    "coupon": {
-      "via": "user",
-      "model": "coupon"
-    },
     "order": {
       "via": "user",
       "model": "order"
@@ -107,6 +103,10 @@
     "carts": {
       "via": "user",
       "collection": "cart"
+    },
+    "coupons": {
+      "via": "user",
+      "collection": "coupon"
     }
   }
 }

@@ -589,9 +589,6 @@
               "isAgent": {
                 "type": "boolean"
               },
-              "coupon": {
-                "type": "string"
-              },
               "order": {
                 "type": "string"
               },
@@ -611,6 +608,12 @@
                 "type": "string"
               },
               "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupons": {
                 "type": "array",
                 "items": {
                   "type": "string"

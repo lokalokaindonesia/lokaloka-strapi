@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/24/2021 11:46:48 AM"
+    "x-generation-date": "12/25/2021 7:19:01 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5930,9 +5930,6 @@
               "isAgent": {
                 "type": "boolean"
               },
-              "coupon": {
-                "type": "string"
-              },
               "order": {
                 "type": "string"
               },
@@ -5952,6 +5949,12 @@
                 "type": "string"
               },
               "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupons": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -6133,9 +6136,6 @@
               "isAgent": {
                 "type": "boolean"
               },
-              "coupon": {
-                "type": "string"
-              },
               "order": {
                 "type": "string"
               },
@@ -6155,6 +6155,12 @@
                 "type": "string"
               },
               "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupons": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -6426,9 +6432,6 @@
               "isAgent": {
                 "type": "boolean"
               },
-              "coupon": {
-                "type": "string"
-              },
               "order": {
                 "type": "string"
               },
@@ -6448,6 +6451,12 @@
                 "type": "string"
               },
               "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupons": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -6992,9 +7001,6 @@
               "isAgent": {
                 "type": "boolean"
               },
-              "coupon": {
-                "type": "string"
-              },
               "order": {
                 "type": "string"
               },
@@ -7014,6 +7020,12 @@
                 "type": "string"
               },
               "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupons": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -7191,9 +7203,6 @@
               "isAgent": {
                 "type": "boolean"
               },
-              "coupon": {
-                "type": "string"
-              },
               "order": {
                 "type": "string"
               },
@@ -7213,6 +7222,12 @@
                 "type": "string"
               },
               "carts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupons": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -7537,9 +7552,6 @@
                 "isAgent": {
                   "type": "boolean"
                 },
-                "coupon": {
-                  "type": "string"
-                },
                 "order": {
                   "type": "string"
                 },
@@ -7559,6 +7571,12 @@
                   "type": "string"
                 },
                 "carts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "coupons": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -7844,52 +7862,6 @@
             "type": "boolean",
             "default": false
           },
-          "coupon": {
-            "required": [
-              "id",
-              "code",
-              "discount",
-              "minSpend"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "code": {
-                "type": "string"
-              },
-              "discount": {
-                "type": "integer"
-              },
-              "user": {
-                "type": "string"
-              },
-              "orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "transactions": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "maxDiscount": {
-                "type": "integer"
-              },
-              "minSpend": {
-                "type": "integer"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "order": {
             "required": [
               "id",
@@ -8067,6 +8039,55 @@
                 }
               }
             }
+          },
+          "coupons": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "code",
+                "discount",
+                "minSpend"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "discount": {
+                  "type": "integer"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "orders": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "transactions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "maxDiscount": {
+                  "type": "integer"
+                },
+                "minSpend": {
+                  "type": "integer"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -8128,9 +8149,6 @@
             "type": "boolean",
             "default": false
           },
-          "coupon": {
-            "type": "string"
-          },
           "order": {
             "type": "string"
           },
@@ -8151,6 +8169,12 @@
             "type": "string"
           },
           "carts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "coupons": {
             "type": "array",
             "items": {
               "type": "string"

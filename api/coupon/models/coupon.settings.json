@@ -22,7 +22,7 @@
       "required": true
     },
     "user": {
-      "via": "coupon",
+      "via": "coupons",
       "plugin": "users-permissions",
       "model": "user"
     },

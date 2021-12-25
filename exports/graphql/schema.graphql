@@ -1454,7 +1454,6 @@ type UsersPermissionsUser {
   name: String
   avatar: UploadFile
   isAgent: Boolean
-  coupon: Coupon
   order: Order
   dateOfBirth: Date
   gender: String
@@ -1463,6 +1462,7 @@ type UsersPermissionsUser {
   reviews(sort: String, limit: Int, start: Int, where: JSON): [Review]
   transactions(sort: String, limit: Int, start: Int, where: JSON): [Transaction]
   carts(sort: String, limit: Int, start: Int, where: JSON): [Cart]
+  coupons(sort: String, limit: Int, start: Int, where: JSON): [Coupon]
 }
 
 type UsersPermissionsUserConnection {
@@ -1490,7 +1490,6 @@ type UsersPermissionsUserGroupBy {
   name: [UsersPermissionsUserConnectionName]
   avatar: [UsersPermissionsUserConnectionAvatar]
   isAgent: [UsersPermissionsUserConnectionIsAgent]
-  coupon: [UsersPermissionsUserConnectionCoupon]
   order: [UsersPermissionsUserConnectionOrder]
   dateOfBirth: [UsersPermissionsUserConnectionDateOfBirth]
   gender: [UsersPermissionsUserConnectionGender]
@@ -1562,11 +1561,6 @@ type UsersPermissionsUserConnectionIsAgent {
   connection: UsersPermissionsUserConnection
 }
 
-type UsersPermissionsUserConnectionCoupon {
-  key: ID
-  connection: UsersPermissionsUserConnection
-}
-
 type UsersPermissionsUserConnectionOrder {
   key: ID
   connection: UsersPermissionsUserConnection
@@ -1602,13 +1596,13 @@ input UserInput {
   name: String
   avatar: ID
   isAgent: Boolean
-  coupon: ID
   order: ID
   transactions: [ID]
   dateOfBirth: Date
   gender: String
   phone: String
   carts: [ID]
+  coupons: [ID]
   created_by: ID
   updated_by: ID
 }
@@ -1628,13 +1622,13 @@ input editUserInput {
   name: String
   avatar: ID
   isAgent: Boolean
-  coupon: ID
   order: ID
   transactions: [ID]
   dateOfBirth: Date
   gender: String
   phone: String
   carts: [ID]
+  coupons: [ID]
   created_by: ID
   updated_by: ID
 }
@@ -1664,7 +1658,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cart | CartConnection | CartAggregator | CartGroupBy | CartConnectionId | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionUser | CartConnectionProduct | CartConnectionQuantity | CartConnectionPublished_at | createCartPayload | updateCartPayload | deleteCartPayload | Coupon | CouponConnection | CouponAggregator | CouponGroupBy | CouponConnectionId | CouponConnection_id | CouponConnectionCreatedAt | CouponConnectionUpdatedAt | CouponConnectionCode | CouponConnectionDiscount | CouponConnectionUser | CouponConnectionMaxDiscount | CouponConnectionMinSpend | createCouponPayload | updateCouponPayload | deleteCouponPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnection_id | OrderConnectionCreatedAt | OrderConnectionUpdatedAt | OrderConnectionUser | OrderConnectionTotalQuantity | OrderConnectionProducts | OrderConnectionTotalPrice | OrderConnectionDiscount | OrderConnectionSubTotal | OrderConnectionCoupon | OrderConnectionProductsOrigin | OrderConnectionTotalWeight | createOrderPayload | updateOrderPayload | deleteOrderPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionSlug | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Product | ProductConnection | ProductAggregator | ProductGroupBy | ProductConnectionId | ProductConnection_id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionName | ProductConnectionPrice | ProductConnectionSellingPrice | ProductConnectionDiscount | ProductConnectionIsRecommended | ProductConnectionDescription | ProductConnectionWeight | ProductConnectionSlug | ProductConnectionProduct_category | createProductPayload | updateProductPayload | deleteProductPayload | Review | ReviewConnection | ReviewAggregator | ReviewGroupBy | ReviewConnectionId | ReviewConnection_id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionUser | ReviewConnectionProduct | createReviewPayload | updateReviewPayload | deleteReviewPayload | Transaction | TransactionConnection | TransactionAggregator | TransactionGroupBy | TransactionConnectionId | TransactionConnection_id | TransactionConnectionCreatedAt | TransactionConnectionUpdatedAt | TransactionConnectionUser | TransactionConnectionProductsOrigin | TransactionConnectionProducts | TransactionConnectionCoupon | TransactionConnectionTotalQuantity | TransactionConnectionTotalPrice | TransactionConnectionDiscount | TransactionConnectionSubTotal | TransactionConnectionPaymentMethod | TransactionConnectionCode | TransactionConnectionBankNumber | TransactionConnectionPaymentStatus | TransactionConnectionQrCodeString | TransactionConnectionPaymentCode | TransactionConnectionShouldPayAmount | TransactionConnectionShippingLocation | TransactionConnectionPhone | TransactionConnectionNotes | TransactionConnectionShippingCost | TransactionConnectionPackagingFee | createTransactionPayload | updateTransactionPayload | deleteTransactionPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionName | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionIsAgent | UsersPermissionsUserConnectionCoupon | UsersPermissionsUserConnectionOrder | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionGender | UsersPermissionsUserConnectionPhone | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cart | CartConnection | CartAggregator | CartGroupBy | CartConnectionId | CartConnection_id | CartConnectionCreatedAt | CartConnectionUpdatedAt | CartConnectionUser | CartConnectionProduct | CartConnectionQuantity | CartConnectionPublished_at | createCartPayload | updateCartPayload | deleteCartPayload | Coupon | CouponConnection | CouponAggregator | CouponGroupBy | CouponConnectionId | CouponConnection_id | CouponConnectionCreatedAt | CouponConnectionUpdatedAt | CouponConnectionCode | CouponConnectionDiscount | CouponConnectionUser | CouponConnectionMaxDiscount | CouponConnectionMinSpend | createCouponPayload | updateCouponPayload | deleteCouponPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnection_id | OrderConnectionCreatedAt | OrderConnectionUpdatedAt | OrderConnectionUser | OrderConnectionTotalQuantity | OrderConnectionProducts | OrderConnectionTotalPrice | OrderConnectionDiscount | OrderConnectionSubTotal | OrderConnectionCoupon | OrderConnectionProductsOrigin | OrderConnectionTotalWeight | createOrderPayload | updateOrderPayload | deleteOrderPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionSlug | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Product | ProductConnection | ProductAggregator | ProductGroupBy | ProductConnectionId | ProductConnection_id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionName | ProductConnectionPrice | ProductConnectionSellingPrice | ProductConnectionDiscount | ProductConnectionIsRecommended | ProductConnectionDescription | ProductConnectionWeight | ProductConnectionSlug | ProductConnectionProduct_category | createProductPayload | updateProductPayload | deleteProductPayload | Review | ReviewConnection | ReviewAggregator | ReviewGroupBy | ReviewConnectionId | ReviewConnection_id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionUser | ReviewConnectionProduct | createReviewPayload | updateReviewPayload | deleteReviewPayload | Transaction | TransactionConnection | TransactionAggregator | TransactionGroupBy | TransactionConnectionId | TransactionConnection_id | TransactionConnectionCreatedAt | TransactionConnectionUpdatedAt | TransactionConnectionUser | TransactionConnectionProductsOrigin | TransactionConnectionProducts | TransactionConnectionCoupon | TransactionConnectionTotalQuantity | TransactionConnectionTotalPrice | TransactionConnectionDiscount | TransactionConnectionSubTotal | TransactionConnectionPaymentMethod | TransactionConnectionCode | TransactionConnectionBankNumber | TransactionConnectionPaymentStatus | TransactionConnectionQrCodeString | TransactionConnectionPaymentCode | TransactionConnectionShouldPayAmount | TransactionConnectionShippingLocation | TransactionConnectionPhone | TransactionConnectionNotes | TransactionConnectionShippingCost | TransactionConnectionPackagingFee | createTransactionPayload | updateTransactionPayload | deleteTransactionPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionName | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionIsAgent | UsersPermissionsUserConnectionOrder | UsersPermissionsUserConnectionDateOfBirth | UsersPermissionsUserConnectionGender | UsersPermissionsUserConnectionPhone | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!
