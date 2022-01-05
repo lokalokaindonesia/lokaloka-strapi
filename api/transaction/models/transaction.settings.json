@@ -90,6 +90,9 @@
     "packagingFee": {
       "type": "biginteger",
       "default": "0"
+    },
+    "area": {
+      "type": "string"
     }
   }
 }

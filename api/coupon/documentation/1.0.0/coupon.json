@@ -758,6 +758,9 @@
                 "packagingFee": {
                   "type": "integer"
                 },
+                "area": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
