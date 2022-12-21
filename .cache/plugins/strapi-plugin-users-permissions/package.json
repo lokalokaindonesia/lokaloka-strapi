@@ -1,40 +1,34 @@
 {
-  "_from": "strapi-plugin-users-permissions@3.6.8",
-  "_id": "strapi-plugin-users-permissions@3.6.8",
+  "_from": "strapi-plugin-users-permissions@^3.6.8",
+  "_id": "strapi-plugin-users-permissions@3.6.11",
   "_inBundle": false,
-  "_integrity": "sha512-DZPPYMUzcDxadc3BHntEobVwrWwYsI1hHK+ENTU0EVD1w9Zi4h41Bae5DKIuqwRCK2G24Dsmr5G/edcVCFeRCg==",
+  "_integrity": "sha512-HrAWSVW9bH4gGOEhzwo9SHfwKEvkvAeiEcvHhCyALQhmTk3VASkodu8ae4Jvegb4yu8x21gXyYN5dBI+oN5Zbg==",
   "_location": "/strapi-plugin-users-permissions",
   "_phantomChildren": {
-    "@babel/runtime": "7.14.6",
     "@sindresorhus/slugify": "1.1.0",
-    "@types/lodash": "4.14.172",
-    "date-fns": "2.22.1",
+    "date-fns": "2.29.3",
     "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
-    "nanoclone": "0.2.1",
     "pino": "4.17.6",
     "pluralize": "8.0.0",
-    "property-expr": "2.0.4",
-    "toposort": "2.0.2"
+    "yup": "0.32.11"
   },
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "strapi-plugin-users-permissions@3.6.8",
+    "raw": "strapi-plugin-users-permissions@^3.6.8",
     "name": "strapi-plugin-users-permissions",
     "escapedName": "strapi-plugin-users-permissions",
-    "rawSpec": "3.6.8",
+    "rawSpec": "^3.6.8",
     "saveSpec": null,
-    "fetchSpec": "3.6.8"
+    "fetchSpec": "^3.6.8"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.6.8.tgz",
-  "_shasum": "7a46c73bb19881607afae3c527eca8835d532210",
-  "_spec": "strapi-plugin-users-permissions@3.6.8",
-  "_where": "D:\\dev\\Job\\LokalokaProject\\lokaloka-strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.6.11.tgz",
+  "_shasum": "fd1588c8624ad6729e7af6ea9fae000bd4abb0dd",
+  "_spec": "strapi-plugin-users-permissions@^3.6.8",
+  "_where": "C:\\Users\\Admin\\Documents\\GitHub\\lokaloka-strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -56,7 +50,7 @@
     "grant-koa": "5.4.8",
     "immutable": "^3.8.2",
     "jsonwebtoken": "^8.1.0",
-    "koa2-ratelimit": "^0.9.0",
+    "koa2-ratelimit": "1.1.2",
     "lodash": "4.17.21",
     "purest": "3.1.0",
     "react": "^16.14.0",
@@ -68,8 +62,8 @@
     "reactstrap": "8.4.1",
     "redux-saga": "^0.16.0",
     "request": "^2.83.0",
-    "strapi-helper-plugin": "3.6.8",
-    "strapi-utils": "3.6.8",
+    "strapi-helper-plugin": "3.6.11",
+    "strapi-utils": "3.6.11",
     "uuid": "^3.1.0"
   },
   "deprecated": false,
@@ -81,7 +75,7 @@
     "node": ">=10.16.0 <=14.x.x",
     "npm": ">=6.0.0"
   },
-  "gitHead": "8972d78e8d1783ded6089d0318bfb62aff8e6962",
+  "gitHead": "62b3ff560e0d1749c4bcf93e5d357501edd9dddb",
   "homepage": "https://github.com/strapi/strapi#readme",
   "license": "SEE LICENSE IN LICENSE",
   "maintainers": [
@@ -105,5 +99,5 @@
     "description": "users-permissions.plugin.description",
     "required": true
   },
-  "version": "3.6.8"
+  "version": "3.6.11"
 }

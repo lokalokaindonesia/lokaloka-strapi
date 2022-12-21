@@ -4,14 +4,7 @@
   "_inBundle": false,
   "_integrity": "sha512-z+dk8uJ4mW6Ohu56BBJOAZCY6fEtZfhUhNMSA7vYsyPop+4sP13MJKqAtNedk44po9MkctXzyC+4wheB4JcPXw==",
   "_location": "/strapi-plugin-email",
-  "_phantomChildren": {
-    "@sindresorhus/slugify": "1.1.0",
-    "date-fns": "2.22.1",
-    "lodash": "4.17.21",
-    "pino": "4.17.6",
-    "pluralize": "8.0.0",
-    "yup": "0.28.5"
-  },
+  "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
@@ -28,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.6.3.tgz",
   "_shasum": "967f3da93ea8c1801b5fb26232ce9b2b316997db",
   "_spec": "strapi-plugin-email@3.6.3",
-  "_where": "D:\\dev\\Job\\LokalokaProject\\lokaloka-strapi",
+  "_where": "C:\\Users\\Admin\\Documents\\GitHub\\lokaloka-strapi",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
