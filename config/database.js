@@ -4,16 +4,17 @@ module.exports = ({ env }) => ({
     default: {
       connector: "mongoose",
       settings: {
-        host: env("DATABASE_HOST", "127.0.0.1"),
         srv: env.bool("DATABASE_SRV", false),
         port: env.int("DATABASE_PORT", 27017),
         database: env("DATABASE_NAME", ""),
-        username: env("DATABASE_USERNAME", ""),
-        password: env("DATABASE_PASSWORD", ""),
+        uri: env(
+          "DATABASE_URI",
+          `mongodb+srv://doadmin:aL943826E0v1lbXW@db-mongodb-sgp1-51567-2e31d856.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-mongodb-sgp1-51567&tls=true`
+        ),
       },
       options: {
-        authenticationDatabase: env("AUTHENTICATION_DATABASE", ""),
-        ssl: env.bool("DATABASE_SSL", false),
+        authenticationDatabase: env("AUTHENTICATION_DATABASE", "admin"),
+        ssl: env.bool("DATABASE_SSL", true),
       },
     },
   },
