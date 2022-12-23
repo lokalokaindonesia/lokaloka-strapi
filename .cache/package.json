@@ -1,41 +1,36 @@
 {
-  "_from": "strapi-admin@3.6.8",
-  "_id": "strapi-admin@3.6.8",
+  "_from": "strapi-admin@^3.6.8",
+  "_id": "strapi-admin@3.6.11",
   "_inBundle": false,
-  "_integrity": "sha512-LqOzAE27eJZAfCgW1KQipESfL2PMumej5CS8dBdu+PHMsn270gKdZceA4vLBYix5OkkNnsKcioTzK1/uyWYpdg==",
+  "_integrity": "sha512-UUJ7+O4eXU/aOeCbuDyNHDLyhFLD+N/9cPE+nNZj/LVn2f+acXAkZRqrBZwN+TSbDfkKJ+7btu/+4HHlIs8wPQ==",
   "_location": "/strapi-admin",
   "_phantomChildren": {
-    "@babel/runtime": "7.14.6",
     "@sindresorhus/slugify": "1.1.0",
-    "@types/lodash": "4.14.172",
-    "date-fns": "2.22.1",
+    "date-fns": "2.29.3",
     "is-docker": "2.2.1",
     "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
-    "nanoclone": "0.2.1",
     "pino": "4.17.6",
     "pluralize": "8.0.0",
-    "property-expr": "2.0.4",
-    "toposort": "2.0.2"
+    "side-channel": "1.0.4",
+    "yup": "0.32.11"
   },
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "strapi-admin@3.6.8",
+    "raw": "strapi-admin@^3.6.8",
     "name": "strapi-admin",
     "escapedName": "strapi-admin",
-    "rawSpec": "3.6.8",
+    "rawSpec": "^3.6.8",
     "saveSpec": null,
-    "fetchSpec": "3.6.8"
+    "fetchSpec": "^3.6.8"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.6.8.tgz",
-  "_shasum": "0000f07c8004c7110b49abb1757f50ab9d751a92",
-  "_spec": "strapi-admin@3.6.8",
-  "_where": "D:\\dev\\Job\\LokalokaProject\\lokaloka-strapi",
+  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.6.11.tgz",
+  "_shasum": "80dd185bf16211dd561fa7b6b35ee3e60aab4eae",
+  "_spec": "strapi-admin@^3.6.8",
+  "_where": "C:\\Users\\Admin\\Documents\\GitHub\\lokaloka-strapi",
   "author": {
     "name": "Strapi"
   },
@@ -88,18 +83,18 @@
     "hoist-non-react-statics": "^3.3.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "immer": "^8.0.1",
+    "immer": "9.0.16",
     "immutable": "^3.8.2",
     "invariant": "^2.2.4",
     "is-wsl": "^2.0.0",
     "js-cookie": "2.2.1",
     "jsonwebtoken": "8.5.1",
     "koa-compose": "4.1.0",
-    "koa-passport": "4.1.4",
+    "koa-passport": "5.0.0",
     "lodash": "4.17.21",
     "match-sorter": "^4.0.2",
     "mini-css-extract-plugin": "^1.4.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "p-map": "4.0.0",
     "passport-local": "1.0.0",
     "prop-types": "^15.7.2",
@@ -131,8 +126,8 @@
     "sanitize.css": "^4.1.0",
     "semver": "7.3.5",
     "sift": "13.5.0",
-    "strapi-helper-plugin": "3.6.8",
-    "strapi-utils": "3.6.8",
+    "strapi-helper-plugin": "3.6.11",
+    "strapi-utils": "3.6.11",
     "style-loader": "^0.23.1",
     "styled-components": "^5.2.3",
     "terser-webpack-plugin": "^1.2.3",
@@ -153,7 +148,7 @@
     "node": ">=10.16.0 <=14.x.x",
     "npm": ">=6.0.0"
   },
-  "gitHead": "8972d78e8d1783ded6089d0318bfb62aff8e6962",
+  "gitHead": "62b3ff560e0d1749c4bcf93e5d357501edd9dddb",
   "homepage": "https://github.com/strapi/strapi#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "index.js",
@@ -173,5 +168,5 @@
     "develop:ce": "STRAPI_DISABLE_EE=true webpack-dev-server --config webpack.config.dev.js",
     "test": "echo \"no tests yet\""
   },
-  "version": "3.6.8"
+  "version": "3.6.11"
 }
